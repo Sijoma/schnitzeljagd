@@ -1,0 +1,8 @@
+agm-map {
+  height: 200px;
+  max-width: 400px;
+}
+
+.error-text {
+  color: red !important;
+}

@@ -1,0 +1,40 @@
+<div>
+    <h3>
+        Euer Zielort:
+    </h3>
+    <p> Latitude: {{ ziel.latitude }}
+        Longitude: {{ ziel.longitude }}
+        <a style="font-size: 4px;"
+           href="https://www.google.com/maps/search/?api=1&query={{ziel.latitude}},{{ziel.longitude}}">Google
+            Maps</a>
+        <button mat-raised-button
+                color="primary"
+                (click)="getDirection()">Weg berechnen</button>
+    </p>
+    <p *ngIf="locationErrorText !== ''"
+       class="error-text">{{locationErrorText}} </p>
+    <agm-map [latitude]="ziel.latitude"
+             [longitude]="ziel.longitude"
+             (mapReady)="onMapReady($event)"
+             [zoom]="zoom">
+        <agm-marker *ngIf="currentLocation"
+                    [latitude]="currentLocation.latitude"
+                    [longitude]="currentLocation.longitude"
+                    [animation]="'bounce'"
+                    [iconUrl]="youAreHereIcon">
+        </agm-marker>
+        <agm-direction *ngIf="origin && destination"
+                       [origin]="origin"
+                       [destination]="destination"
+                       [travelMode]="travelMode"
+                       [renderOptions]="renderOptions"
+                       [markerOptions]="routeMarkerOptions">
+        </agm-direction>
+        <agm-marker *ngIf="!destination"
+                    [latitude]="ziel.latitude"
+                    [longitude]="ziel.longitude"
+                    [animation]="'bounce'"
+                    [iconUrl]="destinationIcon">
+        </agm-marker>
+    </agm-map>
+</div>

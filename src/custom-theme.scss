@@ -1,0 +1,132 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$md-lhtbluepalette: (
+    50 : #e1e3ea,
+    100 : #b4b9ca,
+    200 : #828ba6,
+    300 : #505c82,
+    400 : #2b3968,
+    500 : #05164d,
+    600 : #041346,
+    700 : #04103d,
+    800 : #030c34,
+    900 : #010625,
+    A100 : #6068ff,
+    A200 : #2d38ff,
+    A400 : #000df9,
+    A700 : #000be0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-lhtyellowpalette: (
+    50 : #fff5e0,
+    100 : #ffe6b3,
+    200 : #ffd680,
+    300 : #ffc64d,
+    400 : #ffb926,
+    500 : #ffad00,
+    600 : #ffa600,
+    700 : #ff9c00,
+    800 : #ff9300,
+    900 : #ff8300,
+    A100 : #ffffff,
+    A200 : #fff8f2,
+    A400 : #ffddbf,
+    A700 : #ffcfa6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-lhtradiantpetrol: (
+    50 : #e0f5f9,
+    100 : #b3e7ef,
+    200 : #80d7e5,
+    300 : #4dc7db,
+    400 : #26bbd3,
+    500 : #00afcb,
+    600 : #00a8c6,
+    700 : #009fbe,
+    800 : #0096b8,
+    900 : #0086ac,
+    A100 : #d5f4ff,
+    A200 : #a2e7ff,
+    A400 : #6fdaff,
+    A700 : #56d4ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Schnitzeljagd-primary: mat-palette($md-lhtbluepalette);
+$Schnitzeljagd-accent: mat-palette($md-lhtyellowpalette);
+
+// The warn palette is optional (defaults to red).
+$Schnitzeljagd-warn: mat-palette($md-lhtradiantpetrol);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$Schnitzeljagd-theme: mat-light-theme($Schnitzeljagd-primary, $Schnitzeljagd-accent, $Schnitzeljagd-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($Schnitzeljagd-theme);
+

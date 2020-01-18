@@ -1,0 +1,45 @@
+.example-card {
+  max-width: 400px;
+  width: 90vw;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.antwort-section {
+  padding: 20px;
+}
+
+.falsche-antwort {
+  color: red !important;
+}
+
+.richtige-antwort {
+  color: green !important;
+}

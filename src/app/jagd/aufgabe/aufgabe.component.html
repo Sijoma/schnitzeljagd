@@ -1,0 +1,62 @@
+<mat-card class="example-card"
+          *ngIf="aufgabe">
+    <mat-card-header>
+        <mat-card-title>{{aufgabe.name}}</mat-card-title>
+        <mat-card-subtitle>Aufgabe</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image
+         *ngIf="aufgabe.img"
+         src="{{aufgabe.img}}"
+         alt="">
+    <mat-card-content *ngIf="geloest === false">
+        <div>
+            <h3>Die Aufgabe: </h3>
+            <p>{{aufgabe.beschreibung}}</p>
+            <p>{{aufgabe.frage}}</p>
+        </div>
+        <app-location-aufgabe *ngIf="aufgabe.ziel"
+                              [ziel]="aufgabe.ziel"></app-location-aufgabe>
+    </mat-card-content>
+    <mat-card-actions class="antwort-section">
+        <div *ngIf="geloest === false">
+            <div *ngIf="moeglicheAntworten && moeglicheAntworten.length >0 && aufgabe.typ === 'TriviaAufgabe'">
+                <label id="example-radio-group-label">Wählt eure Antwort:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label"
+                                 class="example-radio-group"
+                                 [(ngModel)]="selectedAnswer">
+                    <mat-radio-button class="example-radio-button"
+                                      *ngFor="let antwort of moeglicheAntworten"
+                                      [value]="antwort">{{antwort}}</mat-radio-button>
+                </mat-radio-group>
+                <button mat-raised-button
+                        color="primary"
+                        (click)="antworten(selectedAnswer)">Lösung einreichen</button>
+            </div>
+
+            <div *ngIf="aufgabe.typ === 'LocationAufgabe'">
+                <app-file-upload [currentAufgabe]="aufgabe"
+                                 [currentTeam]="currentTeam"
+                                 (uploadSuccess)="antworten(aufgabe.richtigeAntwort)"></app-file-upload>
+            </div>
+        </div>
+
+        <div *ngIf="geloest === true && aufgabe.typ === 'TriviaAufgabe'">
+            <span *ngIf="errorText.length > 0"
+                  class="falsche-antwort">{{errorText}}</span>
+            <span *ngIf="successText.length > 0"
+                  class="richtige-antwort">{{successText}}</span>
+            <button mat-raised-button
+                    color="primary"
+                    (click)="nextAufgabe()">Nächste Aufgabe</button>
+        </div>
+        <div *ngIf="geloest === true && aufgabe.typ === 'LocationAufgabe'">
+            <span class="richtige-antwort">Beitrag eingereicht.</span>
+            <button mat-raised-button
+                    color="primary"
+                    (click)="nextAufgabe()">Nächste Aufgabe</button>
+        </div>
+
+
+
+    </mat-card-actions>
+</mat-card>

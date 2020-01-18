@@ -1,0 +1,12 @@
+<div>
+       <h3>Upload:</h3>
+       <mat-progress-bar mode="determinate"
+                         value="{{ uploadPercent | async }}"></mat-progress-bar>
+       <mat-file-upload [labelText]="'Datei:'"
+                        [selectButtonText]="'Auswählen'"
+                        [uploadButtonText]="'Hochladen'"
+                        (uploadClicked)="startUpload($event)"
+                        [showUploadButton]="true"
+                        (selectedFilesChanged)="onSelectedFilesChanged($event)"
+                        [allowMultipleFiles]="false"></mat-file-upload>
+</div>

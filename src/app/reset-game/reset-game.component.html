@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Zurücksetzen der Schnitzeljagd</mat-card-title>
+        <mat-card-subtitle>Achtung der Fortschrtitt geht verloren.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <h3>Euer Team:</h3>
+            <p><strong>Name:</strong> {{team.teamname}}</p>
+            <p><strong>Zugangscode:</strong>{{team.zugangscode}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button
+                (click)="resetGame()">Zurücksetzen</button>
+    </mat-card-actions>
+</mat-card>
